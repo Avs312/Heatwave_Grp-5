@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - Heatwave Intelligence System</title>
+  
+  <style>
+    /* Global Theme (Task 3) */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background-color: #f1f5f9; 
+    }
+
+    footer {
+      background-color: #0f172a; 
+      color: #cbd5e1;
+      text-align: center;
+      padding: 20px;
+      border-top: 4px solid #d97706;
+    }
+
+    /* Navigation Menu (Task 2) */
+    
+    .local-nav { background-color: #1e293b; text-align: center; }
+    .local-nav ul { list-style-type: none; padding: 0; margin: 0; }
+    .local-nav li { display: inline-block; }
+    .local-nav a { display: inline-block; padding: 1rem 1.5rem; color: #f8fafc; text-decoration: none; font-weight: 500; transition: 0.3s; }
+    .local-nav a:hover { background-color: #334155; color: #f59e0b; }
+
+    /* Page Layout (Task 9) */
+    .layout-container {
+      display: flex;
+      max-width: 1200px;
+      margin: 30px auto;
+      gap: 30px;
+      padding: 0 20px;
+    }
+
+    .sidebar {
+      flex: 1; 
+    }
+
+    .content {
+      flex: 3; 
+    }
+
+    /* Sidebar Styling (Task 4) */
+    .status-card {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border: 1px solid #cbd5e1;
+    }
+
+    .status-card ul {
+      list-style: none;
+      padding: 0;
+      line-height: 2;
+    }
+
+    /* Glowing Alert Box (Task 10) */
+    .alert-box {
+      background-color: #fee2e2;
+      border: 3px solid #b91c1c;
+      padding: 40px;
+      border-radius: 10px;
+      text-align: center;
+      color: #7f1d1d;
+      animation: glow 1.5s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 0 10px rgba(185, 28, 28, 0.2); }
+      to { box-shadow: 0 0 25px rgba(185, 28, 28, 0.6); }
+    }
+  </style>
+</head>
+<body>
+
+  <header style="background-color: #0f172a; padding: 2rem; text-align: center; border-bottom: 5px solid #d97706;">
+    <h1 style="color: #ffffff; margin: 0;">Heatwave Intelligence System</h1>
+  </header>
+
+  <nav class="local-nav">
+    <ul>
+      <li><a href="index.html" style="color: rgb(45, 178, 222); font-weight: bold;">Dashboard</a></li>
+      <li><a href="about.html" >System & Sources</a></li>
+      <li><a href="hotspot.html">Regional Forecasts</a></li>
+      <li><a href="subscribe.html">Alert Subscriptions</a></li>
+    </ul>
+  </nav>
+
+  <div class="layout-container">
+    
+    <aside class="sidebar">
+      <div class="status-card">
+        <h3 style="margin-top: 0; color: #0f172a;">Quick Status</h3>
+        <ul>
+          <li><strong>Season:</strong> Summer 2026</li>
+          <li><strong>Status:</strong> <span style="color: #b91c1c; font-weight: bold;">SHW Active</span></li>
+          <li><strong>Sensors:</strong> 142 Online</li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="content">
+      
+      <div class="alert-box">
+        <h2 style="margin-top: 0;">RED ALERT: SEVERE HEATWAVE (SHW)</h2>
+        <p style="font-size: 1.2rem;">Target Region: Central Maharashtra</p>
+        <p>Peak Temperature Expected: 47°C. Urgent Public Hydration & Minimization of Outdoor Exposure Advised.</p>
+      </div>
+
+    </main>
+  </div>
+
+  <footer>
+    <p style="margin: 0;">&copy; 2026 Heatwave Intelligence System | System Operational Command</p>
+  </footer>
+
+</body>
+</html>

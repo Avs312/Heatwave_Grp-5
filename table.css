@@ -1,0 +1,21 @@
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  background-color: #ffffff;
+}
+
+.data-table th, .data-table td {
+  border: 1px solid #cbd5e1;
+  padding: 12px;
+  text-align: center;
+}
+
+.data-table th {
+  background-color: #0f172a;
+  color: #ffffff;
+}
+
+.data-table tr:nth-child(even) {
+  background-color: #f1f5f9;
+}

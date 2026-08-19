@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hotspots & Forecasts - HIS</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="layout.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="table.css">
+<style>
+.local-nav { background-color: #1e293b; text-align: center; }
+.local-nav ul { list-style-type: none; padding: 0; margin: 0; }
+.local-nav li { display: inline-block; }
+.local-nav a { display: inline-block; padding: 1rem 1.5rem; color:
+#f8fafc; text-decoration: none; transition: 0.3s; }
+.local-nav a:hover { background-color: #334155; color: #f59e0b; }
+</style>
+</head>
+<body>
+<header style="background-color: #0f172a; padding: 2rem; text-align:
+center; border-bottom: 5px solid #d97706;">
+<h1 style="color: #ffffff; margin: 0;">Regional Analysis</h1>
+</header>
+<nav class="local-nav">
+<ul>
+<li><a href="index.html">Dashboard</a></li>
+<li><a href="about.html">System & Sources</a></li>
+<li><a href="hotspot.html" style="color: rgb(45, 178, 222); font-weight: bold;">Regional Forecasts</a></li>
+<li><a href="subscribe.html">Alert Subscriptions</a></li>
+    </ul>
+  </nav>
+
+  <div class="layout-container">
+    <main style="flex: 1 1 100%;">
+      
+      <h2 style="text-align: center;">Thermal Imagery Gallery</h2>
+      <!-- Task 6: Image Gallery with Hover effects -->
+      <div class="image-gallery">
+        <img src="north.png" alt="North Zone">
+        <img src="central.png" alt="Central Zone">
+        <img src="south.png" alt="South Zone">
+        <img src="west.png" alt="West Coast">
+      </div>
+
+      <hr style="border: 0; height: 1px; background: #cbd5e1; margin: 3rem 0;">
+
+      <!-- Task 5: Book Card Layout applied to Forecasts -->
+      <div style="display: flex; justify-content: space-between; gap: 1rem;">
+        <div class="forecast-card">
+          <h3 style="color: #b91c1c;">North Zone</h3>
+          <p>Status: Severe Heatwave</p>
+          <p>Peak: 46.5°C</p>
+        </div>
+        <div class="forecast-card">
+          <h3 style="color: #d97706;">Central Zone</h3>
+          <p>Status: High Heat Stress</p>
+          <p>Peak: 42.1°C</p>
+        </div>
+      </div>
+
+      <!-- Task 7: Table Styling -->
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Region</th>
+            <th>Station Name</th>
+            <th>Max Temp (°C)</th>
+            <th>Severity Level</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>North Zone</td>
+            <td>Delhi AWS-01</td>
+            <td>46.5°C</td>
+            <td style="color: #b91c1c; font-weight: bold;">Severe Heatwave</td>
+          </tr>
+          <tr>
+            <td>Central Zone</td>
+            <td>Pune AWS-03</td>
+            <td>39.8°C</td>
+            <td style="color: #15803d; font-weight: bold;">Normal</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </main>
+  </div>
+</body>
+</html>

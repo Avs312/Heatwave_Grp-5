@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Subscription - HIS</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="layout.css">
+  <link rel="stylesheet" href="components.css">
+  <style>
+    .local-nav { background-color: #1e293b; text-align: center; }
+    .local-nav ul { list-style-type: none; padding: 0; margin: 0; }
+    .local-nav li { display: inline-block; }
+    .local-nav a { display: inline-block; padding: 1rem 1.5rem; color: #f8fafc; text-decoration: none; font-weight: 500; transition: 0.3s; }
+    .local-nav a:hover { background-color: #334155; color: #f59e0b; }
+  </style>
+</head>
+<body>
+
+  <header style="background-color: #0f172a; padding: 2rem; text-align: center; border-bottom: 5px solid #d97706;">
+    <h1 style="color: #ffffff; margin: 0;">Heatwave Intelligence System</h1>
+  </header>
+
+  <nav class="local-nav">
+    <ul>
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="about.html" >System & Sources</a></li>
+      <li><a href="hotspot.html">Regional Forecasts</a></li>
+      <li><a href="subscribe.html" style="color: rgb(45, 178, 222); font-weight: bold;">Alert Subscriptions</a></li>
+    </ul>
+  </nav>
+
+  <div class="layout-container">
+    <main style="flex: 1 1 100%; max-width: 600px; margin: 0 auto;">
+      
+      <!-- Task 8: Styled Registration Form -->
+      <form action="#" method="POST">
+        <fieldset>
+          <legend>Citizen Details</legend>
+          
+          <label for="cname">Full Name:</label>
+          <input type="text" id="cname" name="cname" placeholder="Enter full name" required>
+          
+          <label for="email" style="display:block; margin-top: 1rem;">Email Address:</label>
+          <input type="email" id="email" name="email" placeholder="email@example.com" required>
+        </fieldset>
+
+        <fieldset>
+          <legend>Alert Preferences</legend>
+          
+          <label for="region">Select Region:</label>
+          <select id="region" name="region" required>
+            <option value="">-- Choose Your Region --</option>
+            <option value="north">North Zone</option>
+            <option value="central">Central Zone</option>
+          </select>
+        </fieldset>
+
+        <div style="text-align: right;">
+          <input type="submit" value="Subscribe Now">
+          <input type="reset" value="Clear Form">
+        </div>
+      </form>
+
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>System & Sources - HIS</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="layout.css">
+  <link rel="stylesheet" href="components.css">
+  <style>
+    .local-nav { background-color: #1e293b; text-align: center; }
+    .local-nav ul { list-style-type: none; padding: 0; margin: 0; }
+    .local-nav li { display: inline-block; }
+    .local-nav a { display: inline-block; padding: 1rem 1.5rem; color: #f8fafc; text-decoration: none; font-weight: 500; transition: 0.3s; }
+    .local-nav a:hover { background-color: #334155; color: #f59e0b; }
+  </style>
+</head>
+<body>
+
+  <header style="background-color: #0f172a; padding: 2rem; text-align: center; border-bottom: 5px solid #d97706;">
+    <h1 style="color: #ffffff; margin: 0;">Heatwave Intelligence System</h1>
+  </header>
+
+  <nav class="local-nav">
+    <ul>
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="about.html" style="color: rgb(45, 178, 222); font-weight: bold;">System & Sources</a></li>
+      <li><a href="hotspot.html">Regional Forecasts</a></li>
+      <li><a href="subscribe.html">Alert Subscriptions</a></li>
+    </ul>
+  </nav>
+
+  <div class="layout-container">
+    <main id="main-content" class="content-container" style="max-width: 1200px; margin: 2rem auto; padding: 0 1.5rem; display: flex; gap: 2rem; align-items: flex-start;">
+
+    <article style="flex: 2; background: #ffffff; padding: 1.5rem; border-radius: 12px; border: 1px solid #cbd5e1; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+      
+      <header style="border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem; margin-bottom: 1.5rem;">
+        <h2 style="font-size: 1.8rem; color: #0f172a; margin-top: 0; margin-bottom: 0.5rem;">Inside the Heatwave Intelligence Infrastructure</h2>
+        <p style="margin: 0; color: #64748b; font-size: 0.95rem;">
+          Published by <em>System Operational Command</em> | Last Updated: <strong>August 2026</strong>
+        </p>
+      </header>
+
+      <section id="system-objective" style="background-color: #fffbd2; border-left: 5px solid #eab308; padding: 1.25rem; border-radius: 8px; margin-bottom: 1.5rem;">
+        <h3 style="margin-top: 0; color: #854d0e; font-size: 1.2rem;">1. System Objective</h3>
+        <p style="line-height: 1.6; color: #713f12; margin: 0;">
+          The primary objective of <abbr title="Heatwave Intelligence System">HIS</abbr> is to supply <strong>real-time climate telemetry</strong> and <strong>predictive thermal risk assessment</strong> across vulnerable regions. By processing hourly microclimate metrics, the platform helps municipal authorities issue timely public warnings, deploy emergency cooling infrastructure, and minimize <em>heat-induced clinical emergencies</em>.
+        </p>
+      </section>
+
+      <blockquote style="margin: 1.5rem 0; padding: 1.25rem 1.5rem; background-color: #f1f5f9; border-left: 4px solid #253349; font-style: italic; color: #334155; border-radius: 8px;">
+        <p style="margin: 0; font-size: 1.05rem; line-height: 1.6;">
+          "Extreme thermal events are no longer standard seasonal spikes—they represent severe public health hazards requiring active operational readiness. The Heatwave Intelligence System bridges raw meteorological telemetry directly with emergency action response teams."
+        </p>
+        <cite style="display: block; font-style: normal; font-weight: 700; font-size: 0.9rem; color: #0f172a; margin-top: 0.5rem;">
+          — Dr. A. Sharma, <span style="font-weight: 400; color: #475569;">Chief Meteorologist &amp; Disaster Management Lead</span>
+        </cite>
+      </blockquote>
+
+      <section id="data-sources" style="background-color: #e8f6ff; border-left: 5px solid #00a1f1; padding: 1.25rem; border-radius: 8px; margin-bottom: 1.5rem;">
+        <h3 style="margin-top: 0; color: #0369a1; font-size: 1.2rem;">2. Telemetry &amp; Data Sources</h3>
+        <p style="line-height: 1.6; color: #0c4a6e; margin-bottom: 0.75rem;">
+          Calculations are computed using continuous ambient multi-tier sensor feeds and historical metrics compiled from the following streams:
+        </p>
+        <ul style="color: #1e293b; line-height: 1.8; margin: 0; padding-left: 1.25rem;">
+          <li style="margin-bottom: 0.4rem;"><strong style="color: #0369a1;">AWS Sensors:</strong> IoT weather stations providing local temperature, atmospheric pressure, and humidity metrics.</li>
+          <li style="margin-bottom: 0.4rem;"><strong style="color: #0369a1;">IMD Database:</strong> Climatological baselines and regional trend models managed by the Indian Meteorological Department.</li>
+          <li><strong style="color: #0369a1;">Satellite Feeds:</strong> Geostationary thermal imagery (INSAT-3D satellites) measuring Land Surface Temperature (LST) indices.</li>
+        </ul>
+      </section>
+
+      <section id="forecast-workflow" style="background-color: #faf5ff; border-left: 5px solid #9333ea; padding: 1.25rem; border-radius: 8px; margin-bottom: 1.5rem;">
+        <h3 style="margin-top: 0; color: #6b21a8; font-size: 1.2rem;">
+          3. Forecast &amp; Alert Workflow
+        </h3>
+        <p style="line-height: 1.6; color: #581c87; margin-bottom: 0.75rem;">
+          Systematic operational steps triggered during heat event evaluation:
+        </p>
+        <ol style="color: #1e293b; line-height: 1.8; margin: 0; padding-left: 1.25rem;">
+          <li style="margin-bottom: 0.4rem;"><strong style="color: #6b21a8;">Data Acquisition:</strong> Acquire data from IMD historical data and AWS observations.</li>
+          <li style="margin-bottom: 0.4rem;"><strong style="color: #6b21a8;">Data Analytics:</strong> Data preprocessing and storage along with Spatio-Temporal analysis.</li>
+          <li style="margin-bottom: 0.4rem;"><strong style="color: #6b21a8;">Risk Modeling:</strong> Forecasting, early prediction, and severity classification.</li>
+          <li style="margin-bottom: 0.4rem;"><strong style="color: #6b21a8;">Validation:</strong> Forecast validation and local heat assessment using AWS observation.</li>
+          <li style="margin-bottom: 0.4rem;"><strong style="color: #6b21a8;">Decision Support:</strong> Dashboard, visualization, and LLM-based advisories.</li>
+          <li><strong style="color: #6b21a8;">Alert Generation:</strong> Broadcast operational warnings to public safety leads and automated alert systems.</li>
+        </ol>
+      </section>
+
+      <section id="stakeholder-roles" style="background-color: #fce6e6; border-left: 5px solid #ef4444; padding: 1.25rem; border-radius: 8px; margin-bottom: 1.5rem;">
+        <h3 style="margin-top: 0; color: #991b1b; font-size: 1.2rem;">
+          4. Stakeholders &amp; Role-Based Actions
+        </h3>
+        <p style="line-height: 1.6; color: #7f1d1d; margin-bottom: 0.75rem;">
+          The system maintains direct operational integrations with key emergency partners (NDMA, healthcare units, transit networks, and agricultural boards). Role permissions and available action protocols include:
+        </p>
+        <ul style="color: #1e293b; line-height: 1.8; margin: 0; padding-left: 1.25rem;">
+          <li style="margin-bottom: 0.75rem;">
+            <strong style="color: #991b1b;">System Administrators</strong>
+            <ul style="color: #475569; line-height: 1.6; margin-top: 0.25rem; padding-left: 1.25rem;">
+              <li>Configure sensor ingestion rates and alert thresholds.</li>
+              <li>Manage system authentication and API permissions.</li>
+            </ul>
+          </li>
+          <li style="margin-bottom: 0.75rem;">
+            <strong style="color: #991b1b;">Meteorological Analysts</strong>
+            <ul style="color: #475569; line-height: 1.6; margin-top: 0.25rem; padding-left: 1.25rem;">
+              <li>Verify machine-generated thermal anomalies and perform manual reviews.</li>
+              <li>Issue advisory bulletins to municipal authorities.</li>
+            </ul>
+          </li>
+          <li style="margin-bottom: 0.75rem;">
+            <strong style="color: #991b1b;">Emergency Responders &amp; Municipal Authorities</strong>
+            <ul style="color: #475569; line-height: 1.6; margin-top: 0.25rem; padding-left: 1.25rem;">
+              <li>Deploy mobile cooling shelters and public hydration stations.</li>
+              <li>Coordinate EMS dispatch teams based on thermal risk maps.</li>
+            </ul>
+          </li>
+          <li>
+            <strong style="color: #991b1b;">General Public &amp; Media</strong>
+            <ul style="color: #475569; line-height: 1.6; margin-top: 0.25rem; padding-left: 1.25rem;">
+              <li>Receive real-time public emergency alerts.</li>
+              <li>Access local heat intensity maps and cooling shelter locations.</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+    </article>
+
+    <aside style="flex: 1; display: flex; flex-direction: column; gap: 1.5rem;">
+      
+      <section style="background: #ffffff; padding: 1.25rem; border-radius: 12px; border: 1px solid #cbd5e1; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+        <h3 style="margin-top: 0; font-size: 1.05rem; color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">
+          System Overview
+        </h3>
+        <p style="margin-top: 0.75rem; font-size: 0.95rem; line-height: 1.6; color: #475569;">
+          The <abbr title="Heatwave Intelligence System">HIS</abbr> is a multi-layered climate monitoring and predictive analytics platform designed to provide actionable insights during extreme heat events. It integrates real-time telemetry, historical climate data, and predictive modeling to support public safety and emergency response.
+        </p>
+      </section>
+
+      <section style="background: #ffffff; padding: 1.25rem; border-radius: 12px; border: 1px solid #cbd5e1; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+        <h3 style="margin-top: 0; font-size: 1.05rem; color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">
+          Live Telemetry Desk
+        </h3>
+        
+        <div style="margin-top: 0.75rem;">
+          <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #475569;">
+            <strong>Highest Regional Temp:</strong> <span style="color: #dc2626; font-weight: 700;">47.0<sup>&deg;</sup>C</span>
+          </p>
+          <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #475569;">
+            <strong>Active Alert Zone:</strong> Central Maharashtra
+          </p>
+          <p style="margin: 0.25rem 0; font-size: 0.9rem; color: #475569;">
+            <strong>Status:</strong> <span style="background-color: #fee2e2; color: #991b1b; padding: 2px 6px; border-radius: 4px; font-size: 0.8rem; font-weight: 700;">RED ALERT</span>
+          </p>
+        </div>
+      </section>
+
+      <section style="background: #ffffff; padding: 1.25rem; border-radius: 12px; border: 1px solid #cbd5e1; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+        <h3 style="margin-top: 0; font-size: 1.05rem; color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">
+          Alert Threshold Scale
+        </h3>
+        <ul style="list-style: none; padding: 0; margin: 0.75rem 0 0 0; font-size: 0.85rem; line-height: 1.8;">
+          <li style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.25rem; margin-bottom: 0.25rem;">
+            <span><strong style="color: #16a34a;">Yellow:</strong> 40.0&deg;C – 42.9&deg;C</span>
+            <span style="color: #64748b; font-size: 0.75rem;">Heat Watch</span>
+          </li>
+          <li style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.25rem; margin-bottom: 0.25rem;">
+            <span><strong style="color: #d97706;">Orange:</strong> 43.0&deg;C – 44.9&deg;C</span>
+            <span style="color: #64748b; font-size: 0.75rem;">Severe Alert</span>
+          </li>
+          <li style="display: flex; justify-content: space-between; align-items: center;">
+            <span><strong style="color: #dc2626;">Red:</strong> &ge; 45.0&deg;C</span>
+            <span style="color: #64748b; font-size: 0.75rem;">Extreme Emergency</span>
+          </li>
+        </ul>
+      </section>
+
+      <section style="background: #0f172a; color: #f8fafc; padding: 1.25rem; border-radius: 12px;">
+        <h4 style="margin-top: 0; color: #38bdf8; font-size: 0.95rem; text-transform: uppercase;">
+          Safety Advisory
+        </h4>
+        <p style="margin: 0 0 0.75rem 0; font-size: 0.875rem; line-height: 1.5; color: #cbd5e1;">
+          Avoid direct solar exposure between <strong>11:00 AM and 4:00 PM</strong>. Ensure hydration supplies contain electrolytes during extreme conditions.
+        </p>
+        <div style="border-top: 1px solid #334155; padding-top: 0.75rem; font-size: 0.8rem; color: #94a3b8;">
+          <strong style="color: #f8fafc;">Symptoms of Heat Stroke:</strong>
+          <ul style="margin: 0.25rem 0 0 0; padding-left: 1rem;">
+            <li>High body temperature (&gt;40&deg;C)</li>
+            <li>Altered mental status or confusion</li>
+            <li>Nausea, vomiting, rapid breathing</li>
+          </ul>
+        </div>
+      </section>
+
+      <section style="background: #ffffff; padding: 1.25rem; border-radius: 12px; border: 1px solid #cbd5e1; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+        <h3 style="margin-top: 0; font-size: 1.05rem; color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">
+          Emergency Hotline Desk
+        </h3>
+        <p style="margin: 0.75rem 0 0.5rem 0; font-size: 0.85rem; color: #475569;">
+          Direct lines during active RED ALERT conditions:
+        </p>
+        <div style="font-size: 0.85rem; line-height: 1.6; color: #1e293b;">
+          <div><strong>NDMA Disaster Helpline:</strong> <span style="color: #0284c7;">1078</span></div>
+          <div><strong>Medical Emergency (EMS):</strong> <span style="color: #0284c7;">108 / 112</span></div>
+          <div><strong>State Heatwave Cell:</strong> <span style="color: #0284c7;">1800-233-4567</span></div>
+        </div>
+      </section>
+
+      <section style="background: #e2eff4; padding: 1.25rem; border-radius: 12px; border: 1px solid #cbd5e1; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+        <h3 style="margin-top: 0; font-size: 1.05rem; color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">
+          Abbreviations &amp; Glossary
+        </h3>
+        <dl style="margin: 0; color: #334155; line-height: 1.6;">
+          <dt style="font-weight: 700; color: #062774; margin-top: 0.5rem; font-size: 0.95rem;">AWS</dt>
+          <dd style="margin-left: 1.25rem; margin-bottom: 0.85rem; color: #475569;"><strong style="text-decoration: underline dotted #283b68;">Automatic Weather Station:</strong> Automated meteorological sensor arrays that log ambient environmental data in real time.</dd>
+
+          <dt style="font-weight: 700; color: #062774; margin-top: 0.5rem; font-size: 0.95rem;">IMD</dt>
+          <dd style="margin-left: 1.25rem; margin-bottom: 0.85rem; color: #475569;"><strong style="text-decoration: underline dotted #283b68;">Indian Meteorological Department:</strong> The primary government body responsible for weather forecasting and climate data governance.</dd>
+
+          <dt style="font-weight: 700; color: #062774; margin-top: 0.5rem; font-size: 0.95rem;">HW</dt>
+          <dd style="margin-left: 1.25rem; margin-bottom: 0.85rem; color: #475569;"><strong style="text-decoration: underline dotted #283b68;">Heatwave:</strong> A prolonged period of unusually high thermal stress exceeding pre-established regional thresholds.</dd>
+
+          <dt style="font-weight: 700; color: #062774; margin-top: 0.5rem; font-size: 0.95rem;">SHW</dt>
+          <dd style="margin-left: 1.25rem; margin-bottom: 0.25rem; color: #475569;"><strong style="text-decoration: underline dotted #283b68;">Severe Heatwave:</strong> Critical heat levels significantly above baseline limits that pose severe threats to public health and infrastructure.</dd>
+        </dl>
+      </section>
+
+    </aside>
+
+  </main>
+  </div>
+</body>
+</html>
