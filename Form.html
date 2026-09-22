@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heatwave Incident & Subscription Form - HIS</title>
+  
+  <!-- Site Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="layout.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="form.css">
+  
+  <!-- Form JavaScript -->
+  <script src="form.js" defer></script>
+  
+  <style>
+    .local-nav { background-color: #1e293b; text-align: center; }
+    .local-nav ul { list-style-type: none; padding: 0; margin: 0; }
+    .local-nav li { display: inline-block; }
+    .local-nav a { display: inline-block; padding: 1rem 1.5rem; color: #f8fafc; text-decoration: none; font-weight: 500; transition: 0.3s; }
+    .local-nav a:hover { background-color: #334155; color: #f59e0b; }
+  </style>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header style="background-color: #0f172a; padding: 2rem; text-align: center; border-bottom: 5px solid #d97706;">
+    <h1 style="color: #ffffff; margin: 0;">Heatwave Intelligence System</h1>
+  </header>
+
+  <!-- Local Navigation Bar -->
+  <nav class="local-nav">
+    <ul>
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="about.html">System & Sources</a></li>
+      <li><a href="hotspot.html">Regional Forecasts</a></li>
+      <li><a href="subscribe.html">Alert Subscriptions</a></li>
+      <li><a href="Form.html" style="color: rgb(45, 178, 222); font-weight: bold;">Report & Register</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content Layout -->
+  <div class="layout-container">
+    <main style="flex: 1 1 100%; max-width: 720px; margin: 0 auto;">
+      
+      <div class="form-card">
+        <div class="form-header">
+          <h2>Incident & Alert Registration</h2>
+          <p>Submit local heatwave observations or configure your regional emergency subscription.</p>
+        </div>
+
+        <form id="hisForm" action="#" method="POST" novalidate>
+          
+          <!-- Fieldset 1: Citizen Contact Details -->
+          <fieldset>
+            <legend>1. Contact Information</legend>
+            
+            <div class="form-group">
+              <label for="fullName">Full Name <span class="required-asterisk">*</span></label>
+              <input type="text" id="fullName" name="fullName" placeholder="e.g. Jane Doe" required>
+              <div id="nameError" class="error-message"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address <span class="required-asterisk">*</span></label>
+              <input type="email" id="email" name="email" placeholder="janedoe@example.com" required>
+              <div id="emailError" class="error-message"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Contact Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="+91 9876543210">
+              <div id="phoneError" class="error-message"></div>
+            </div>
+          </fieldset>
+
+          <!-- Fieldset 2: Alert Preferences -->
+          <fieldset>
+            <legend>2. Region & Priority Settings</legend>
+            
+            <div class="form-group">
+              <label for="region">Target Region <span class="required-asterisk">*</span></label>
+              <select id="region" name="region" required>
+                <option value="">-- Select Target Region --</option>
+                <option value="north">North Zone (Delhi NCR)</option>
+                <option value="central">Central Zone (Maharashtra / MP)</option>
+                <option value="south">South Zone (Telangana / Andhra Pradesh)</option>
+                <option value="west">West Coast (Gujarat / Rajasthan)</option>
+              </select>
+              <div id="regionError" class="error-message"></div>
+            </div>
+
+            <div class="form-group">
+              <label>Alert Severity Level</label>
+              <div class="radio-group">
+                <label class="radio-option">
+                  <input type="radio" name="alertType" value="Standard Advisory" checked>
+                  Standard Advisory
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="alertType" value="High Warning">
+                  High Temp Warning
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="alertType" value="Red Alert (SHW)">
+                  Red Alert (Severe Heatwave)
+                </label>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Fieldset 3: Incident Observations -->
+          <fieldset>
+            <legend>3. Weather Observations & Report</legend>
+
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <div class="form-group" style="flex: 1 1 200px;">
+                <label for="temperature">Observed Temperature (°C)</label>
+                <input type="number" id="temperature" name="temperature" min="20" max="60" step="0.1" placeholder="e.g. 44.5">
+              </div>
+
+              <div class="form-group" style="flex: 1 1 200px;">
+                <label for="obsTime">Observation Time</label>
+                <input type="datetime-local" id="obsTime" name="obsTime">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="incidentDetails">Observation Details / Incident Notes</label>
+              <textarea id="incidentDetails" name="incidentDetails" maxlength="300" placeholder="Describe local extreme weather conditions, power cuts, or water shortages..."></textarea>
+              <div id="charCounter" class="char-counter">0 / 300 characters</div>
+            </div>
+
+            <div class="form-group">
+              <div class="checkbox-group">
+                <label class="checkbox-option">
+                  <input type="checkbox" id="smsOptIn" name="smsOptIn" value="yes">
+                  Receive emergency SMS notifications during Severe Heatwave (SHW) events
+                </label>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Form Buttons -->
+          <div class="form-actions">
+            <input type="reset" value="Clear Form" class="btn-reset">
+            <input type="submit" value="Submit Form" class="btn-submit">
+          </div>
+
+          <!-- Dynamic JS Feedback Display Container -->
+          <div id="formFeedback" class="form-feedback"></div>
+
+        </form>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Common Footer -->
+  <footer class="site-footer">
+    <p style="margin: 0;">&copy; 2026 Heatwave Intelligence System | System Operational Command</p>
+  </footer>
+
+</body>
+</html>

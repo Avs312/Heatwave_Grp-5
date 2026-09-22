@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heatwave Monitoring Form - Climate Intelligence Portal</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <!-- Portal Header -->
+  <header class="header">
+    <h1>Climate Intelligence & Heatwave Early Warning Portal</h1>
+    <p>Automated Weather Station (AWS) Data Collection & Validation Module</p>
+  </header>
+
+  <!-- Main Container -->
+  <div class="container">
+    <h2>Experiment 4: Heatwave Monitoring Form</h2>
+    <p class="subtitle">Please fill out all mandatory weather observation and observer fields.</p>
+
+    <!-- Success Message Banner -->
+    <div id="successMessage" class="success-box" style="display: none;"></div>
+
+    <!-- Form Section -->
+    <form id="heatwaveForm" onsubmit="validateForm(event)" novalidate>
+
+      <!-- Fieldset 1: Observer Details -->
+      <fieldset>
+        <legend>1. Observer & Contact Details</legend>
+
+        <div class="form-group">
+          <label for="observerName">Observer Name <span class="required">*</span></label>
+          <input type="text" id="observerName" name="observerName" placeholder="e.g., Avani Saxena">
+          <span id="nameError" class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address <span class="required">*</span></label>
+          <input type="email" id="email" name="email" placeholder="e.g., observer@somaiya.edu">
+          <span id="emailError" class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="mobile">Mobile Number (10 digits) <span class="required">*</span></label>
+          <input type="tel" id="mobile" name="mobile" placeholder="e.g., 9876543210">
+          <span id="mobileError" class="error-message"></span>
+        </div>
+      </fieldset>
+
+      <!-- Fieldset 2: Weather Station & Location -->
+      <fieldset>
+        <legend>2. Weather Station Information</legend>
+
+        <div class="form-group">
+          <label for="stationId">AWS Station ID <span class="required">*</span></label>
+          <input type="text" id="stationId" name="stationId" placeholder="e.g., AWS001">
+          <span id="stationError" class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="location">Station Location <span class="required">*</span></label>
+          <input type="text" id="location" name="location" placeholder="e.g., Central Mumbai Station">
+          <span id="locationError" class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="obsDate">Observation Date <span class="required">*</span></label>
+          <input type="date" id="obsDate" name="obsDate">
+          <span id="dateError" class="error-message"></span>
+        </div>
+      </fieldset>
+
+      <!-- Fieldset 3: Meteorological Data -->
+      <fieldset>
+        <legend>3. Weather Observation Data</legend>
+
+        <div class="form-group">
+          <label for="maxTemp">Maximum Temperature (°C) <span class="required">*</span></label>
+          <input type="number" id="maxTemp" name="maxTemp" step="0.1" placeholder="e.g., 42.5">
+          <span id="tempError" class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="humidity">Humidity (%) <span class="required">*</span></label>
+          <input type="number" id="humidity" name="humidity" min="0" max="100" placeholder="e.g., 65">
+          <span id="humidityError" class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="alertLevel">Heatwave Alert Level <span class="required">*</span></label>
+          <select id="alertLevel" name="alertLevel">
+            <option value="">-- Select Alert Level --</option>
+            <option value="Normal">Green - Normal</option>
+            <option value="Heatwave Warning">Yellow - Heatwave Warning</option>
+            <option value="Severe Heatwave">Red - Severe Heatwave Alert</option>
+          </select>
+          <span id="alertError" class="error-message"></span>
+        </div>
+      </fieldset>
+
+      <!-- Action Buttons -->
+      <div class="button-group">
+        <button type="reset" class="btn-reset" onclick="clearErrors()">Clear Form</button>
+        <button type="submit" class="btn-submit">Submit Observations</button>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Climate Intelligence & Heatwave Early Warning Portal | Web Development Lab Exp 4</p>
+  </footer>
+
+</body>
+</html>
