@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 3: JavaScript Object for Climate Monitoring - Climate Intelligence</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .object-card {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+    .method-box {
+      background: #f8fafc;
+      border-left: 4px solid #d97706;
+      padding: 15px;
+      margin-top: 15px;
+      border-radius: 0 6px 6px 0;
+    }
+    .btn-method {
+      background-color: #0f172a;
+      color: #ffffff;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-right: 8px;
+      margin-top: 8px;
+    }
+    .btn-method:hover {
+      background-color: #d97706;
+    }
+    code {
+      background: #e2e8f0;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      color: #0f172a;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <h1>Climate Intelligence & Heatwave Early Warning Portal</h1>
+    <p>Task 3: Object-Oriented JavaScript Climate Monitoring Module</p>
+  </header>
+
+  <!-- Main Container -->
+  <div class="container">
+    <h2>Climate Monitoring Object (`climateData`)</h2>
+    <p class="subtitle">Demonstrates JavaScript Object Literals, Dot Notation, `this` keyword, and Methods.</p>
+
+    <!-- Object Display Card -->
+    <div class="object-card">
+      <h3>Object Properties & Live Data</h3>
+      <div id="objectPropertiesDisplay"></div>
+    </div>
+
+    <!-- Object Methods Execution Card -->
+    <div class="object-card">
+      <h3>Execute Object Methods</h3>
+      <p>Click below to test methods defined inside the <code>climateData</code> object:</p>
+      
+      <button class="btn-method" onclick="testDisplayData()">displayData()</button>
+      <button class="btn-method" onclick="testTempDiff()">calculateTempDiff()</button>
+      <button class="btn-method" onclick="testRiskLevel()">determineRiskLevel()</button>
+      <button class="btn-method" onclick="testEarlyWarning()">getEarlyWarningStatus()</button>
+      <button class="btn-method" onclick="testUpdateStatus()">updateAlertStatus("Resolved")</button>
+
+      <div id="methodOutput" class="method-box">
+        <strong>Method Output:</strong> <span id="methodResultText">Click a button above to run an object method.</span>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2026 Climate Intelligence System | Task 3: Climate Object</p>
+  </footer>
+
+  <!-- JavaScript Program for Task 3 -->
+  <script>
+    // 1. Create JavaScript Object using object-literal syntax
+    let climateData = {
+      location: "Mumbai",
+      city: "Mumbai",
+      temperature: 39,
+      thresholdTemp: 37,
+      humidity: 65,
+      windSpeed: 12,
+      forecastTemperature: 41,
+      riskLevel: "High",
+      alertStatus: "Active",
+      monitoringDate: "2026-09-24",
+
+      // Method 1: Display complete climate information
+      displayData: function() {
+        console.log("=== CLIMATE OBJECT DATA ===");
+        console.log("Location: " + this.location + " (" + this.city + ")");
+        console.log("Temperature: " + this.temperature + "°C");
+        console.log("Humidity: " + this.humidity + "%");
+        console.log("Wind Speed: " + this.windSpeed + " km/h");
+        console.log("Forecast Temp: " + this.forecastTemperature + "°C");
+        console.log("Risk Level: " + this.riskLevel);
+        console.log("Alert Status: " + this.alertStatus);
+        console.log("Monitoring Date: " + this.monitoringDate);
+
+        return `Location: ${this.location}, Temp: ${this.temperature}°C, Humidity: ${this.humidity}%, Risk: ${this.riskLevel}, Alert: ${this.alertStatus}`;
+      },
+
+      // Method 2: Calculate temperature difference from threshold
+      calculateTempDiff: function() {
+        let diff = this.temperature - this.thresholdTemp;
+        return `Current Temp (${this.temperature}°C) exceeds Threshold (${this.thresholdTemp}°C) by +${diff}°C`;
+      },
+
+      // Method 3: Determine heatwave risk level
+      determineRiskLevel: function() {
+        if (this.temperature >= 40) {
+          this.riskLevel = "Severe";
+        } else if (this.temperature >= 38 && this.humidity >= 60) {
+          this.riskLevel = "High";
+        } else if (this.temperature >= 35) {
+          this.riskLevel = "Moderate";
+        } else {
+          this.riskLevel = "Normal";
+        }
+        return `Evaluated Risk Level: ${this.riskLevel} (Temp: ${this.temperature}°C, Humidity: ${this.humidity}%)`;
+      },
+
+      // Method 4: Display early-warning status
+      getEarlyWarningStatus: function() {
+        if (this.forecastTemperature >= 40) {
+          return `EARLY WARNING ACTIVE: Forecast Temperature (${this.forecastTemperature}°C) indicates upcoming extreme heatwave.`;
+        } else {
+          return `NO EARLY WARNING: Forecast Temperature (${this.forecastTemperature}°C) within normal range.`;
+        }
+      },
+
+      // Method 5: Update alert status
+      updateAlertStatus: function(newStatus) {
+        let oldStatus = this.alertStatus;
+        this.alertStatus = newStatus;
+        renderObjectProperties();
+        return `Alert Status updated from "${oldStatus}" to "${this.alertStatus}"`;
+      }
+    };
+
+    // Helper function to render properties into HTML page
+    function renderObjectProperties() {
+      const container = document.getElementById("objectPropertiesDisplay");
+      container.innerHTML = `
+        <p><strong>location:</strong> "${climateData.location}"</p>
+        <p><strong>city:</strong> "${climateData.city}"</p>
+        <p><strong>temperature:</strong> ${climateData.temperature}°C</p>
+        <p><strong>thresholdTemp:</strong> ${climateData.thresholdTemp}°C</p>
+        <p><strong>humidity:</strong> ${climateData.humidity}%</p>
+        <p><strong>windSpeed:</strong> ${climateData.windSpeed} km/h</p>
+        <p><strong>forecastTemperature:</strong> ${climateData.forecastTemperature}°C</p>
+        <p><strong>riskLevel:</strong> "${climateData.riskLevel}"</p>
+        <p><strong>alertStatus:</strong> "<span style="color:#d97706; font-weight:bold;">${climateData.alertStatus}</span>"</p>
+        <p><strong>monitoringDate:</strong> "${climateData.monitoringDate}"</p>
+      `;
+    }
+
+    // Interactive Button Handlers
+    function testDisplayData() {
+      let res = climateData.displayData();
+      document.getElementById("methodResultText").textContent = res;
+      alert("displayData() executed! Check console (F12) or see result box.");
+    }
+
+    function testTempDiff() {
+      document.getElementById("methodResultText").textContent = climateData.calculateTempDiff();
+    }
+
+    function testRiskLevel() {
+      document.getElementById("methodResultText").textContent = climateData.determineRiskLevel();
+    }
+
+    function testEarlyWarning() {
+      document.getElementById("methodResultText").textContent = climateData.getEarlyWarningStatus();
+    }
+
+    function testUpdateStatus() {
+      let msg = climateData.updateAlertStatus("Resolved / Monitoring Inactive");
+      document.getElementById("methodResultText").textContent = msg;
+    }
+
+    // Initial render
+    renderObjectProperties();
+    climateData.displayData();
+  </script>
+</body>
+</html>

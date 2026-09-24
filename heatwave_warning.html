@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 2: Heatwave Risk & Early Warning Decision - Climate Intelligence</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .input-card {
+      background: #fafafa;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .result-card {
+      background: #ffffff;
+      border: 2px solid #0f172a;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+    .badge-high {
+      background-color: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #fca5a5;
+    }
+    .badge-severe {
+      background-color: #7f1d1d;
+      color: #ffffff;
+    }
+    .badge-moderate {
+      background-color: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
+    }
+    .badge-normal {
+      background-color: #dcfce7;
+      color: #166534;
+      border: 1px solid #86efac;
+    }
+    .badge-early {
+      background-color: #e0f2fe;
+      color: #075985;
+      border: 1px solid #7dd3fc;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <h1>Climate Intelligence & Heatwave Early Warning Portal</h1>
+    <p>Task 2: Heatwave Risk & Early-Warning Decision Module</p>
+  </header>
+
+  <!-- Main Container -->
+  <div class="container">
+    <h2>Heatwave Risk & Early-Warning Decision</h2>
+    <p class="subtitle">Evaluates temperature, humidity, and weather forecasts using logical control statements.</p>
+
+    <!-- Interactive Inputs Form -->
+    <div class="input-card">
+      <h3>Enter Location & Climate Readings</h3>
+      <div class="form-group">
+        <label for="location">Location Name:</label>
+        <input type="text" id="location" value="Pune">
+      </div>
+      <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+        <div class="form-group" style="flex: 1 1 180px;">
+          <label for="temperature">Current Temp (°C):</label>
+          <input type="number" id="temperature" value="39" step="0.1">
+        </div>
+        <div class="form-group" style="flex: 1 1 180px;">
+          <label for="humidity">Humidity (%):</label>
+          <input type="number" id="humidity" value="65" min="0" max="100">
+        </div>
+        <div class="form-group" style="flex: 1 1 180px;">
+          <label for="forecastTemp">Forecast Temp (°C):</label>
+          <input type="number" id="forecastTemp" value="41" step="0.1">
+        </div>
+      </div>
+      <button onclick="evaluateRiskDecision()" style="background-color: #0f172a; color: #fff; width: 100%; padding: 12px; font-weight: bold; border-radius: 6px; border: none; cursor: pointer;">
+        Evaluate Warning Level
+      </button>
+    </div>
+
+    <!-- Output Results Card -->
+    <div class="result-card">
+      <h3>Decision Output Summary</h3>
+      <p><strong>Location:</strong> <span id="resLocation">Pune</span></p>
+      <p><strong>Temperature:</strong> <span id="resTemp">39°C</span> | <strong>Humidity:</strong> <span id="resHumidity">65%</span></p>
+      <p><strong>Forecast Temp:</strong> <span id="resForecast">41°C</span></p>
+      <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 15px 0;">
+      
+      <p><strong>Risk Level:</strong> <span id="riskBadge" class="badge badge-high">HIGH</span></p>
+      <p style="font-size: 1.1rem; margin-top: 10px;">
+        <strong>Recommendation:</strong> <span id="recText" style="color: #991b1b; font-weight: bold;">Issue Heatwave Warning</span>
+      </p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2026 Climate Intelligence System | Task 2: Early Warning Decision</p>
+  </footer>
+
+  <!-- JavaScript Program for Task 2 -->
+  <script>
+    // Function to calculate and update decision output
+    function evaluateRiskDecision() {
+      // 1. Accept climate values using JavaScript variables
+      let loc = document.getElementById("location").value || "Pune";
+      let temp = parseFloat(document.getElementById("temperature").value);
+      let hum = parseFloat(document.getElementById("humidity").value);
+      let fTemp = parseFloat(document.getElementById("forecastTemp").value);
+
+      let riskLevel = "";
+      let recommendation = "";
+      let badgeClass = "";
+
+      // 2. Decision Rules using if, else-if, and else with relational (>=, <) & logical (&&, ||) operators
+      if (temp >= 40) {
+        riskLevel = "SEVERE";
+        recommendation = "Severe Heatwave Warning – Take Immediate Emergency Action!";
+        badgeClass = "badge badge-severe";
+      } 
+      else if (temp >= 38 && hum >= 60) {
+        riskLevel = "HIGH";
+        recommendation = "High Heat Risk – Issue Heatwave Warning";
+        badgeClass = "badge badge-high";
+      } 
+      else if (temp >= 35 && temp < 38) {
+        riskLevel = "MODERATE";
+        recommendation = "Moderate Heat Risk – Monitor Conditions";
+        badgeClass = "badge badge-moderate";
+      } 
+      else if (fTemp >= 40) {
+        riskLevel = "EARLY WARNING";
+        recommendation = "Early Warning – Prepare for Severe Heatwave";
+        badgeClass = "badge badge-early";
+      } 
+      else {
+        riskLevel = "NORMAL";
+        recommendation = "Normal – Continue Monitoring";
+        badgeClass = "badge badge-normal";
+      }
+
+      // 3. Update DOM Output
+      document.getElementById("resLocation").textContent = loc;
+      document.getElementById("resTemp").textContent = temp + "°C";
+      document.getElementById("resHumidity").textContent = hum + "%";
+      document.getElementById("resForecast").textContent = fTemp + "°C";
+
+      const badge = document.getElementById("riskBadge");
+      badge.textContent = riskLevel;
+      badge.className = badgeClass;
+
+      document.getElementById("recText").textContent = recommendation;
+
+      // 4. Log to Console
+      console.log("=== TASK 2: HEATWAVE WARNING DECISION ===");
+      console.log("Location: " + loc);
+      console.log("Temperature: " + temp + "°C | Humidity: " + hum + "% | Forecast: " + fTemp + "°C");
+      console.log("Risk Level: " + riskLevel);
+      console.log("Recommendation: " + recommendation);
+    }
+
+    // Run once on initial page load
+    evaluateRiskDecision();
+  </script>
+</body>
+</html>

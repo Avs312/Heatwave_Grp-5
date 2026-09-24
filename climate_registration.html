@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 6: Climate Intelligence Registration & Early-Warning Form</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .registration-card {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+      margin-bottom: 30px;
+    }
+    
+    .field-error {
+      color: #dc2626;
+      font-size: 0.825rem;
+      margin-top: 4px;
+      display: none;
+      font-weight: 500;
+    }
+
+    .input-invalid {
+      border-color: #dc2626 !important;
+      background-color: #fef2f2 !important;
+      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15) !important;
+    }
+
+    .success-card {
+      display: none;
+      background-color: #f0fdf4;
+      border: 2px solid #22c55e;
+      color: #15803d;
+      padding: 25px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      text-align: center;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    .success-card h2 {
+      color: #15803d;
+      margin-top: 0;
+      font-size: 1.6rem;
+    }
+
+    .success-card p {
+      font-size: 1.05rem;
+      margin: 8px 0;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <h1>Climate Intelligence & Heatwave Early Warning Portal</h1>
+    <p>Task 6: User Registration & Early-Warning Subscription Module</p>
+  </header>
+
+  <!-- Main Container -->
+  <div class="container" style="max-width: 720px;">
+    
+    <!-- Success Banner -->
+    <div id="registrationSuccess" class="success-card">
+      <h2>Registration Successful!</h2>
+      <p style="font-size: 1.1rem; font-weight: bold;">You are registered for Climate Intelligence Heatwave Monitoring and Early-Warning Alerts.</p>
+      <div id="registeredDetailsSummary" style="background:#ffffff; border:1px solid #bbf7d0; padding:15px; border-radius:8px; margin-top:15px; text-align:left; color:#1e293b; font-size:0.95rem;"></div>
+    </div>
+
+    <!-- Registration Form -->
+    <div class="registration-card">
+      <div style="text-align: center; margin-bottom: 20px;">
+        <h2 style="color: #0f172a; margin: 0 0 5px 0;">Early-Warning Registration Form</h2>
+        <p style="color: #64748b; margin: 0; font-size: 0.95rem;">Register to receive localized heatwave advisories and early warnings.</p>
+      </div>
+
+      <form id="regForm" onsubmit="handleFormSubmission(event)" novalidate>
+
+        <!-- Fieldset 1: User Information -->
+        <fieldset>
+          <legend>1. Personal & Account Details</legend>
+
+          <div class="form-group">
+            <label for="userName">User Name <span class="required">*</span></label>
+            <input type="text" id="userName" name="userName" placeholder="e.g. Rahul Sharma">
+            <div id="userNameErr" class="field-error">User name must contain only alphabets and spaces.</div>
+          </div>
+
+          <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+            <div class="form-group" style="flex: 1 1 220px;">
+              <label for="mobileNumber">Mobile Number (10 Digits) <span class="required">*</span></label>
+              <input type="tel" id="mobileNumber" name="mobileNumber" placeholder="e.g. 9876543210">
+              <div id="mobileErr" class="field-error">Mobile number must contain exactly 10 digits starting with 6-9.</div>
+            </div>
+
+            <div class="form-group" style="flex: 1 1 220px;">
+              <label for="email">Email Address <span class="required">*</span></label>
+              <input type="email" id="email" name="email" placeholder="e.g. rahul@gmail.com">
+              <div id="emailErr" class="field-error">Please enter a valid email address format.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="userId">Climate User ID (CLM-1234) <span class="required">*</span></label>
+            <input type="text" id="userId" name="userId" placeholder="e.g. CLM-1234">
+            <div id="userIdErr" class="field-error">User ID must follow the pattern CLM-1234 (e.g. CLM-5678).</div>
+          </div>
+        </fieldset>
+
+        <!-- Fieldset 2: Location Information -->
+        <fieldset>
+          <legend>2. Location & Address Details</legend>
+
+          <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+            <div class="form-group" style="flex: 1 1 220px;">
+              <label for="locationCity">Location / City <span class="required">*</span></label>
+              <input type="text" id="locationCity" name="locationCity" placeholder="e.g. Mumbai">
+              <div id="locationErr" class="field-error">Location/City must contain alphabets and spaces only.</div>
+            </div>
+
+            <div class="form-group" style="flex: 1 1 220px;">
+              <label for="pinCode">PIN / Postal Code (6 Digits) <span class="required">*</span></label>
+              <input type="text" id="pinCode" name="pinCode" placeholder="e.g. 400077">
+              <div id="pinErr" class="field-error">PIN Code must contain exactly 6 digits.</div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Fieldset 3: Demographics & Alert Preferences -->
+        <fieldset>
+          <legend>3. Demographics & Alert Preferences</legend>
+
+          <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+            <div class="form-group" style="flex: 1 1 220px;">
+              <label for="ageGroup">Age Group <span class="required">*</span></label>
+              <select id="ageGroup" name="ageGroup">
+                <option value="">-- Select Age Group --</option>
+                <option value="Under 18">Under 18</option>
+                <option value="18 - 35">18 - 35 years</option>
+                <option value="36 - 60">36 - 60 years</option>
+                <option value="Above 60 (Senior)">Above 60 years (Senior Citizen)</option>
+              </select>
+              <div id="ageErr" class="field-error">Please select an Age Group.</div>
+            </div>
+
+            <div class="form-group" style="flex: 1 1 220px;">
+              <label for="userCategory">User Category <span class="required">*</span></label>
+              <select id="userCategory" name="userCategory">
+                <option value="">-- Select User Category --</option>
+                <option value="General Public">General Public</option>
+                <option value="Senior Citizen">Senior Citizen</option>
+                <option value="Student">Student</option>
+                <option value="Outdoor Worker">Outdoor Worker</option>
+                <option value="Healthcare Worker">Healthcare Worker</option>
+                <option value="Government/Disaster Management">Government / Disaster Management</option>
+                <option value="Other">Other</option>
+              </select>
+              <div id="categoryErr" class="field-error">User Category must be selected.</div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+            <div class="form-group" style="flex: 1 1 220px;">
+              <label for="alertChannel">Preferred Alert Channel <span class="required">*</span></label>
+              <select id="alertChannel" name="alertChannel">
+                <option value="">-- Select Alert Channel --</option>
+                <option value="SMS">SMS Alerts</option>
+                <option value="Email">Email Notifications</option>
+                <option value="WhatsApp">WhatsApp Messages</option>
+                <option value="Push Notification">Mobile Push Notifications</option>
+              </select>
+              <div id="channelErr" class="field-error">Preferred Alert Channel must be selected.</div>
+            </div>
+
+            <div class="form-group" style="flex: 1 1 220px;">
+              <label for="regDate">Registration Date <span class="required">*</span></label>
+              <input type="date" id="regDate" name="regDate">
+              <div id="dateErr" class="field-error">Registration date must be entered and cannot be a future date.</div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Buttons -->
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+          <button type="reset" onclick="clearFormErrors()" class="btn-reset" style="background-color: #64748b; color: #fff; border: none; padding: 12px 20px; border-radius: 6px; font-weight: bold; cursor: pointer;">Reset Form</button>
+          <button type="submit" class="btn-submit" style="background-color: #0f172a; color: #fff; border: none; padding: 12px 25px; border-radius: 6px; font-weight: bold; cursor: pointer;">Complete Registration</button>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2026 Climate Intelligence System | Task 6: Registration & Early Warning Form</p>
+  </footer>
+
+  <!-- JavaScript Program for Task 6 -->
+  <script>
+    // Regular Expression Constants
+    const nameRegex = /^[A-Za-z ]+$/;
+    const mobileRegex = /^[6-9][0-9]{9}$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const userIdRegex = /^CLM-[0-9]{4}$/;
+    const locationRegex = /^[A-Za-z ]+$/;
+    const pinRegex = /^[0-9]{6}$/;
+
+    // Main Submit Event Handler
+    function handleFormSubmission(event) {
+      // 1. Prevent default form submission
+      event.preventDefault();
+      
+      // 2. Reset existing error styles and messages
+      clearFormErrors();
+
+      let isValid = true;
+
+      // Validate User Name
+      const nameVal = document.getElementById("userName").value.trim();
+      if (nameVal === "" || !nameRegex.test(nameVal)) {
+        markInvalid("userName", "userNameErr");
+        isValid = false;
+      }
+
+      // Validate Mobile Number
+      const mobileVal = document.getElementById("mobileNumber").value.trim();
+      if (mobileVal === "" || !mobileRegex.test(mobileVal)) {
+        markInvalid("mobileNumber", "mobileErr");
+        isValid = false;
+      }
+
+      // Validate Email Address
+      const emailVal = document.getElementById("email").value.trim();
+      if (emailVal === "" || !emailRegex.test(emailVal)) {
+        markInvalid("email", "emailErr");
+        isValid = false;
+      }
+
+      // Validate User ID
+      const userIdVal = document.getElementById("userId").value.trim();
+      if (userIdVal === "" || !userIdRegex.test(userIdVal)) {
+        markInvalid("userId", "userIdErr");
+        isValid = false;
+      }
+
+      // Validate Location/City
+      const locationVal = document.getElementById("locationCity").value.trim();
+      if (locationVal === "" || !locationRegex.test(locationVal)) {
+        markInvalid("locationCity", "locationErr");
+        isValid = false;
+      }
+
+      // Validate PIN Code
+      const pinVal = document.getElementById("pinCode").value.trim();
+      if (pinVal === "" || !pinRegex.test(pinVal)) {
+        markInvalid("pinCode", "pinErr");
+        isValid = false;
+      }
+
+      // Validate Age Group
+      const ageVal = document.getElementById("ageGroup").value;
+      if (ageVal === "") {
+        markInvalid("ageGroup", "ageErr");
+        isValid = false;
+      }
+
+      // Validate User Category
+      const categoryVal = document.getElementById("userCategory").value;
+      if (categoryVal === "") {
+        markInvalid("userCategory", "categoryErr");
+        isValid = false;
+      }
+
+      // Validate Preferred Alert Channel
+      const channelVal = document.getElementById("alertChannel").value;
+      if (channelVal === "") {
+        markInvalid("alertChannel", "channelErr");
+        isValid = false;
+      }
+
+      // Validate Registration Date (Must be entered and NOT in future)
+      const dateInput = document.getElementById("regDate");
+      const dateVal = dateInput.value;
+      if (dateVal === "") {
+        markInvalid("regDate", "dateErr");
+        isValid = false;
+      } else {
+        const selectedDate = new Date(dateVal);
+        const today = new Date();
+        // Reset time portion for accurate date comparison
+        today.setHours(23, 59, 59, 999);
+        if (selectedDate > today) {
+          markInvalid("regDate", "dateErr");
+          isValid = false;
+        }
+      }
+
+      // 3. Stop submission if validation fails
+      if (!isValid) {
+        const firstInvalid = document.querySelector(".input-invalid");
+        if (firstInvalid) {
+          firstInvalid.scrollIntoView({ behavior: "smooth", block: "center" });
+          firstInvalid.focus();
+        }
+        return;
+      }
+
+      // 4. Display Success Message when all validation rules pass
+      const successBanner = document.getElementById("registrationSuccess");
+      const summaryBox = document.getElementById("registeredDetailsSummary");
+      
+      summaryBox.innerHTML = `
+        <p style="margin:0 0 5px 0;"><strong>Name:</strong> ${escapeHtml(nameVal)} (${escapeHtml(categoryVal)})</p>
+        <p style="margin:0 0 5px 0;"><strong>User ID:</strong> ${escapeHtml(userIdVal)} | <strong>Location:</strong> ${escapeHtml(locationVal)} (${escapeHtml(pinVal)})</p>
+        <p style="margin:0 0 5px 0;"><strong>Contact:</strong> ${escapeHtml(mobileVal)} | ${escapeHtml(emailVal)}</p>
+        <p style="margin:0;"><strong>Alert Preference:</strong> ${escapeHtml(channelVal)} | <strong>Registration Date:</strong> ${escapeHtml(dateVal)}</p>
+      `;
+
+      successBanner.style.display = "block";
+      successBanner.scrollIntoView({ behavior: "smooth", block: "center" });
+
+      // Reset form controls
+      document.getElementById("regForm").reset();
+    }
+
+    // Helper: Mark field invalid and show error
+    function markInvalid(fieldId, errorId) {
+      const field = document.getElementById(fieldId);
+      const err = document.getElementById(errorId);
+      if (field) field.classList.add("input-invalid");
+      if (err) err.style.display = "block";
+    }
+
+    // Helper: Clear error states
+    function clearFormErrors() {
+      document.querySelectorAll(".field-error").forEach(el => el.style.display = "none");
+      document.querySelectorAll(".input-invalid").forEach(el => el.classList.remove("input-invalid"));
+      const successBanner = document.getElementById("registrationSuccess");
+      if (successBanner) successBanner.style.display = "none";
+    }
+
+    // Escape HTML to prevent XSS
+    function escapeHtml(text) {
+      return String(text).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 5: Validate Climate Monitoring Registration Details - Climate Intelligence</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .form-card {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    .error-msg {
+      color: #dc2626;
+      font-size: 0.85rem;
+      margin-top: 4px;
+      display: none;
+    }
+    .input-invalid {
+      border-color: #dc2626 !important;
+      background-color: #fef2f2 !important;
+    }
+    .success-box {
+      background-color: #dcfce7;
+      border: 1px solid #86efac;
+      color: #166534;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <h1>Climate Intelligence & Heatwave Early Warning Portal</h1>
+    <p>Task 5: Climate Monitoring Registration Validation Module</p>
+  </header>
+
+  <!-- Main Container -->
+  <div class="container">
+    <h2>Validate Climate Registration Details</h2>
+    <p class="subtitle">Validates User Name, Mobile, Email, Location, Climate User ID, and PIN Code using Regular Expressions.</p>
+
+    <!-- Success Message Box -->
+    <div id="successBox" class="success-box"></div>
+
+    <!-- Registration Form -->
+    <div class="form-card">
+      <form id="climateValForm" onsubmit="validateRegistration(event)" novalidate>
+        
+        <div class="form-group">
+          <label for="userName">User Name <span class="required">*</span></label>
+          <input type="text" id="userName" placeholder="e.g. Rahul Sharma">
+          <div id="nameErr" class="error-msg">User Name must contain alphabets and spaces only.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="mobileNo">Mobile Number <span class="required">*</span></label>
+          <input type="tel" id="mobileNo" placeholder="e.g. 9876543210">
+          <div id="mobileErr" class="error-msg">Mobile number must be a 10-digit number starting with 6-9.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="emailAddr">Email Address <span class="required">*</span></label>
+          <input type="email" id="emailAddr" placeholder="e.g. rahul@gmail.com">
+          <div id="emailErr" class="error-msg">Please enter a valid email address format.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="locationName">Location / City <span class="required">*</span></label>
+          <input type="text" id="locationName" placeholder="e.g. Mumbai">
+          <div id="locationErr" class="error-msg">Location must contain alphabets and spaces only.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="userId">Climate User ID (CLM-1234) <span class="required">*</span></label>
+          <input type="text" id="userId" placeholder="e.g. CLM-1234">
+          <div id="userIdErr" class="error-msg">User ID must follow the format CLM-1234 (e.g. CLM-5678).</div>
+        </div>
+
+        <div class="form-group">
+          <label for="pinCode">PIN / Postal Code <span class="required">*</span></label>
+          <input type="text" id="pinCode" placeholder="e.g. 400077">
+          <div id="pinErr" class="error-msg">PIN Code must be exactly 6 digits.</div>
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-top: 20px;">
+          <button type="reset" onclick="resetValidationForm()" style="background: #64748b; color: #fff; padding: 10px 20px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">Reset</button>
+          <button type="submit" style="background: #0f172a; color: #fff; padding: 10px 20px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; flex: 1;">Validate Details</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2026 Climate Intelligence System | Task 5: Registration Details Validation</p>
+  </footer>
+
+  <!-- JavaScript Program for Task 5 -->
+  <script>
+    // Regular Expressions for Validation Rules
+    const regexName = /^[A-Za-z ]+$/;
+    const regexMobile = /^[6-9][0-9]{9}$/;
+    const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const regexLocation = /^[A-Za-z ]+$/;
+    const regexUserId = /^CLM-[0-9]{4}$/;
+    const regexPin = /^[0-9]{6}$/;
+
+    function validateRegistration(event) {
+      event.preventDefault();
+      resetValidationForm();
+
+      let isValid = true;
+
+      // 1. Validate User Name
+      const nameVal = document.getElementById("userName").value.trim();
+      if (nameVal === "" || !regexName.test(nameVal)) {
+        showFieldError("userName", "nameErr");
+        isValid = false;
+      }
+
+      // 2. Validate Mobile Number
+      const mobileVal = document.getElementById("mobileNo").value.trim();
+      if (mobileVal === "" || !regexMobile.test(mobileVal)) {
+        showFieldError("mobileNo", "mobileErr");
+        isValid = false;
+      }
+
+      // 3. Validate Email Address
+      const emailVal = document.getElementById("emailAddr").value.trim();
+      if (emailVal === "" || !regexEmail.test(emailVal)) {
+        showFieldError("emailAddr", "emailErr");
+        isValid = false;
+      }
+
+      // 4. Validate Location Name
+      const locationVal = document.getElementById("locationName").value.trim();
+      if (locationVal === "" || !regexLocation.test(locationVal)) {
+        showFieldError("locationName", "locationErr");
+        isValid = false;
+      }
+
+      // 5. Validate User ID (CLM-1234)
+      const userIdVal = document.getElementById("userId").value.trim();
+      if (userIdVal === "" || !regexUserId.test(userIdVal)) {
+        showFieldError("userId", "userIdErr");
+        isValid = false;
+      }
+
+      // 6. Validate PIN Code
+      const pinVal = document.getElementById("pinCode").value.trim();
+      if (pinVal === "" || !regexPin.test(pinVal)) {
+        showFieldError("pinCode", "pinErr");
+        isValid = false;
+      }
+
+      // Display Success Message when all fields are valid
+      if (isValid) {
+        const successBox = document.getElementById("successBox");
+        successBox.style.display = "block";
+        successBox.innerHTML = `
+          <h3 style="margin-top:0;">Registration Details Validated Successfully!</h3>
+          <p><strong>User Name:</strong> ${escapeHtml(nameVal)}</p>
+          <p><strong>Mobile Number:</strong> ${escapeHtml(mobileVal)} | <strong>Email:</strong> ${escapeHtml(emailVal)}</p>
+          <p><strong>Location:</strong> ${escapeHtml(locationVal)} | <strong>PIN Code:</strong> ${escapeHtml(pinVal)}</p>
+          <p><strong>Climate User ID:</strong> ${escapeHtml(userIdVal)}</p>
+        `;
+      }
+    }
+
+    function showFieldError(inputId, errId) {
+      document.getElementById(inputId).classList.add("input-invalid");
+      document.getElementById(errId).style.display = "block";
+    }
+
+    function resetValidationForm() {
+      document.querySelectorAll(".error-msg").forEach(el => el.style.display = "none");
+      document.querySelectorAll("input").forEach(el => el.classList.remove("input-invalid"));
+      const successBox = document.getElementById("successBox");
+      successBox.style.display = "none";
+      successBox.innerHTML = "";
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+  </script>
+</body>
+</html>

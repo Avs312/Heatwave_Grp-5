@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 4: Analyze Temperature Readings Using Arrays - Climate Intelligence</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .card-box {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+    .temp-badge {
+      display: inline-block;
+      padding: 6px 12px;
+      margin: 4px;
+      border-radius: 6px;
+      font-weight: bold;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+    }
+    .temp-high {
+      background: #fee2e2;
+      color: #991b1b;
+      border-color: #fca5a5;
+    }
+    .temp-extreme {
+      background: #7f1d1d;
+      color: #ffffff;
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .metric-card {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .metric-card h4 {
+      margin: 0 0 5px 0;
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+    .metric-card .val {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #0f172a;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <h1>Climate Intelligence & Heatwave Early Warning Portal</h1>
+    <p>Task 4: Temperature Readings Array Analysis Module</p>
+  </header>
+
+  <!-- Main Container -->
+  <div class="container">
+    <h2>Temperature Readings Analysis</h2>
+    <p class="subtitle">Traverses array elements, performs statistical calculations, and filters heatwave conditions.</p>
+
+    <!-- Readings Array Display -->
+    <div class="card-box">
+      <h3>All Temperature Readings (°C)</h3>
+      <div id="readingsBadges"></div>
+    </div>
+
+    <!-- Analysis Metrics Grid -->
+    <div class="card-box">
+      <h3>Statistical & Heatwave Analysis Summary</h3>
+      
+      <div class="metric-grid">
+        <div class="metric-card">
+          <h4>MINIMUM TEMP</h4>
+          <div class="val" id="minTempDisplay">34°C</div>
+        </div>
+        <div class="metric-card">
+          <h4>MAXIMUM TEMP</h4>
+          <div class="val" id="maxTempDisplay" style="color: #b91c1c;">42°C</div>
+        </div>
+        <div class="metric-card">
+          <h4>AVERAGE TEMP</h4>
+          <div class="val" id="avgTempDisplay">38.1°C</div>
+        </div>
+        <div class="metric-card">
+          <h4>READINGS ≥ 40°C</h4>
+          <div class="val" id="count40Display" style="color: #b91c1c;">3</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 20px; padding: 15px; background: #fafafa; border-radius: 8px; border: 1px solid #e2e8f0;">
+        <p><strong>Readings Exceeding Threshold (> 37°C):</strong> <span id="countThresholdDisplay">6 readings</span></p>
+        <p><strong>High Heat Condition Readings (≥ 40°C):</strong> <span id="highHeatList" style="color: #b91c1c; font-weight: bold;">41°C, 40°C, 42°C</span></p>
+      </div>
+    </div>
+
+    <!-- Interactive Add Reading Control -->
+    <div class="card-box">
+      <h3>Add New Temperature Reading</h3>
+      <div style="display: flex; gap: 10px;">
+        <input type="number" id="newTempInput" placeholder="Enter temp e.g. 43" step="0.1" style="flex: 1;">
+        <button onclick="addNewReading()" style="background: #0f172a; color: #fff; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer;">Add Reading</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2026 Climate Intelligence System | Task 4: Array Analysis</p>
+  </footer>
+
+  <!-- JavaScript Program for Task 4 -->
+  <script>
+    // 1. Consider initial temperature readings array
+    let temperatureReadings = [34, 36, 38, 39, 41, 40, 37, 35, 39, 42];
+    const threshold = 37;
+
+    function analyzeTemperatureData() {
+      // 2. Perform operations
+      
+      // A. Display all temperature readings
+      const badgesContainer = document.getElementById("readingsBadges");
+      badgesContainer.innerHTML = "";
+      
+      temperatureReadings.forEach((temp) => {
+        let badgeClass = "temp-badge";
+        if (temp >= 40) {
+          badgeClass = "temp-badge temp-extreme";
+        } else if (temp > threshold) {
+          badgeClass = "temp-badge temp-high";
+        }
+        badgesContainer.innerHTML += `<span class="${badgeClass}">${temp}°C</span>`;
+      });
+
+      // B. Find Minimum Temperature (using loop or Math.min)
+      let minTemp = temperatureReadings[0];
+      for (let i = 1; i < temperatureReadings.length; i++) {
+        if (temperatureReadings[i] < minTemp) {
+          minTemp = temperatureReadings[i];
+        }
+      }
+
+      // C. Find Maximum Temperature (using loop or Math.max)
+      let maxTemp = temperatureReadings[0];
+      for (let i = 1; i < temperatureReadings.length; i++) {
+        if (temperatureReadings[i] > maxTemp) {
+          maxTemp = temperatureReadings[i];
+        }
+      }
+
+      // D. Calculate Average Temperature
+      let sum = 0;
+      for (let i = 0; i < temperatureReadings.length; i++) {
+        sum += temperatureReadings[i];
+      }
+      let avgTemp = (sum / temperatureReadings.length).toFixed(1);
+
+      // E. Count readings above threshold (> 37°C)
+      let countAboveThreshold = 0;
+      for (let i = 0; i < temperatureReadings.length; i++) {
+        if (temperatureReadings[i] > threshold) {
+          countAboveThreshold++;
+        }
+      }
+
+      // F. Count readings >= 40°C
+      let countAbove40 = 0;
+      let highHeatReadings = [];
+      for (let i = 0; i < temperatureReadings.length; i++) {
+        if (temperatureReadings[i] >= 40) {
+          countAbove40++;
+          highHeatReadings.push(temperatureReadings[i] + "°C");
+        }
+      }
+
+      // 3. Render Outputs to DOM
+      document.getElementById("minTempDisplay").textContent = minTemp + "°C";
+      document.getElementById("maxTempDisplay").textContent = maxTemp + "°C";
+      document.getElementById("avgTempDisplay").textContent = avgTemp + "°C";
+      document.getElementById("count40Display").textContent = countAbove40;
+      document.getElementById("countThresholdDisplay").textContent = countAboveThreshold + " readings";
+      document.getElementById("highHeatList").textContent = highHeatReadings.join(", ");
+
+      // 4. Log to Console
+      console.log("=== TASK 4: TEMPERATURE READINGS ARRAY ANALYSIS ===");
+      console.log("Temperature Readings: " + temperatureReadings.join(" "));
+      console.log("Minimum Temperature: " + minTemp + "°C");
+      console.log("Maximum Temperature: " + maxTemp + "°C");
+      console.log("Average Temperature: " + avgTemp + "°C");
+      console.log("Readings >= 40°C: " + countAbove40);
+      console.log("Readings > Threshold (" + threshold + "°C): " + countAboveThreshold);
+      console.log("Heatwave Condition Readings: " + highHeatReadings.join(", "));
+    }
+
+    // Function to add new dynamic reading
+    function addNewReading() {
+      const input = document.getElementById("newTempInput");
+      const val = parseFloat(input.value);
+      if (!isNaN(val)) {
+        temperatureReadings.push(val);
+        input.value = "";
+        analyzeTemperatureData();
+      } else {
+        alert("Please enter a valid temperature value!");
+      }
+    }
+
+    // Run analysis on page load
+    analyzeTemperatureData();
+  </script>
+</body>
+</html>

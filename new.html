@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="msg1"></p>
+    <button id="btn1">Click me</button>
+    <p id="box">Attempting to change colour!</p>
+    <h5 id="line">This is a line</h5>
+    <input type="text" id="name">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js">
+    </script>
+
+<script>
+    $(document).ready(function() {
+        alert("Hello, World!");
+        $('#msg1').text("Hello!");
+        $('#btn1').click(function() {
+            $('#msg1').text("Button clicked!");
+            $('#box').css({
+                'color': 'red',
+                'font-size': '20px'
+            });
+            $('#line').css({
+                'color': 'green',
+                'font-size': '20px'
+            });
+        }); 
+        let name = $('#name').val();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 1: Heatwave Temperature Analysis - Climate Intelligence</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .output-card {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    .status-alert {
+      background-color: #fee2e2;
+      border: 2px solid #b91c1c;
+      color: #991b1b;
+      padding: 15px;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-top: 15px;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+    .status-normal {
+      background-color: #dcfce7;
+      border: 2px solid #166534;
+      color: #14532d;
+      padding: 15px;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-top: 15px;
+      text-align: center;
+    }
+    .data-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .btn-action {
+      background-color: #0f172a;
+      color: #ffffff;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-right: 10px;
+      margin-top: 15px;
+    }
+    .btn-action:hover {
+      background-color: #d97706;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <h1>Climate Intelligence & Heatwave Early Warning Portal</h1>
+    <p>Task 1: Heatwave Temperature Analysis Module</p>
+  </header>
+
+  <!-- Main Container -->
+  <div class="container">
+    <h2>Heatwave Temperature Analysis</h2>
+    <p class="subtitle">Evaluates temperature threshold crossing and detects heatwave conditions.</p>
+
+    <!-- Display Card -->
+    <div class="output-card">
+      <h3>Location & Weather Summary</h3>
+      
+      <div class="data-row">
+        <span><strong>Location:</strong></span>
+        <span id="dispLocation">Mumbai</span>
+      </div>
+      <div class="data-row">
+        <span><strong>Current Temperature:</strong></span>
+        <span id="dispCurrentTemp">39°C</span>
+      </div>
+      <div class="data-row">
+        <span><strong>Heatwave Threshold:</strong></span>
+        <span id="dispThreshold">37°C</span>
+      </div>
+      <div class="data-row">
+        <span><strong>Temperature Difference:</strong></span>
+        <span id="dispDiff">2°C</span>
+      </div>
+      <div class="data-row">
+        <span><strong>Humidity:</strong></span>
+        <span id="dispHumidity">65%</span>
+      </div>
+      <div class="data-row">
+        <span><strong>Monitoring Date:</strong></span>
+        <span id="dispDate">2026-09-24</span>
+      </div>
+
+      <!-- Status Display Box -->
+      <div id="statusBox" class="status-alert">
+        Status: Heatwave Condition Detected
+      </div>
+
+      <!-- Interactive Trigger Buttons for Message Printing Methods -->
+      <div style="margin-top: 20px;">
+        <button class="btn-action" onclick="runAlertPrint()">Trigger alert()</button>
+        <button class="btn-action" onclick="runConsoleLog()">Print to console.log()</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2026 Climate Intelligence System | Task 1: Heatwave Analysis</p>
+  </footer>
+
+  <!-- JavaScript Program for Task 1 -->
+  <script>
+    // 1. Declare variables
+    let locationName = "Mumbai";
+    let currentTemp = 39;
+    let thresholdTemp = 37;
+    let humidity = 65;
+    let monitoringDate = "2026-09-24";
+
+    // 2. Perform operations
+    // Calculate difference between current temperature and heatwave threshold
+    let tempDifference = currentTemp - thresholdTemp;
+
+    // Determine whether the current temperature has crossed the threshold
+    let isHeatwaveDetected = currentTemp > thresholdTemp;
+    let heatwaveStatus = isHeatwaveDetected ? "Heatwave Condition Detected" : "Normal Condition";
+
+    // 3. Output to Console using console.log()
+    console.log("=== TASK 1: HEATWAVE TEMPERATURE ANALYSIS ===");
+    console.log("Location: " + locationName);
+    console.log("Current Temperature: " + currentTemp + "°C");
+    console.log("Heatwave Threshold: " + thresholdTemp + "°C");
+    console.log("Temperature Difference: " + tempDifference + "°C");
+    console.log("Humidity: " + humidity + "%");
+    console.log("Status: " + heatwaveStatus);
+
+    // Function to trigger alert() method
+    function runAlertPrint() {
+      alert(
+        "Location: " + locationName + "\n" +
+        "Current Temperature: " + currentTemp + "°C\n" +
+        "Heatwave Threshold: " + thresholdTemp + "°C\n" +
+        "Temperature Difference: " + tempDifference + "°C\n\n" +
+        "Status: " + heatwaveStatus
+      );
+    }
+
+    // Function to re-log to console
+    function runConsoleLog() {
+      console.log("Re-printing to console...");
+      console.log("Location: " + locationName + " | Temp: " + currentTemp + "°C | Threshold: " + thresholdTemp + "°C | Diff: " + tempDifference + "°C");
+      alert("Check developer console (F12 -> Console) to see console.log() output!");
+    }
+
+    // Render data dynamically into HTML DOM
+    document.getElementById("dispLocation").textContent = locationName;
+    document.getElementById("dispCurrentTemp").textContent = currentTemp + "°C";
+    document.getElementById("dispThreshold").textContent = thresholdTemp + "°C";
+    document.getElementById("dispDiff").textContent = tempDifference + "°C";
+    document.getElementById("dispHumidity").textContent = humidity + "%";
+    document.getElementById("dispDate").textContent = monitoringDate;
+
+    const statusBox = document.getElementById("statusBox");
+    if (isHeatwaveDetected) {
+      statusBox.className = "status-alert";
+      statusBox.textContent = "Status: " + heatwaveStatus;
+    } else {
+      statusBox.className = "status-normal";
+      statusBox.textContent = "Status: " + heatwaveStatus;
+    }
+  </script>
+</body>
+</html>
